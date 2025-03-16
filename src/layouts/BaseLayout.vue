@@ -34,10 +34,6 @@
           :class="{ 'active-menu': $route.path === '/laporan' }">
           <i class="bi bi-file-earmark-text me-2"></i> Laporan
         </router-link>
-        <router-link to="/logout" class="nav-link menu-item logout text-danger fw-bold"
-          :class="{ 'active-menu': $route.path === '/logout' }" @click="logout">
-          <i class="bi bi-box-arrow-left me-2"></i> Logout
-        </router-link>
       </nav>
     </aside>
 
@@ -45,10 +41,17 @@
     <div class="main-content flex-grow-1">
       <header class="app-header p-3 bg-white border-bottom d-flex justify-content-between align-items-center">
         <!-- Search Bar -->
-        <div class="search-container d-flex align-items-center">
-          <div class="search-wrapper">
-            <input type="text" class="search-input" placeholder="Search Here">
-            <i class="bi bi-search search-icon"></i>
+        <div class="search-container">
+          <div class="input-group search-wrapper">
+            <input
+              type="text"
+              class="form-control search-input"
+              placeholder="Search Here"
+              v-model="searchQuery"
+            />
+            <span class="input-group-text search-icon">
+              <i class="bi bi-search"></i>
+            </span>
           </div>
         </div>
 
@@ -57,9 +60,9 @@
           <i class="bi bi-bell notification-icon"></i>
 
           <div class="d-flex align-items-center gap-2 user-profile" @click="toggleDropdown">
-            <img src="https://via.placeholder.com/50" alt="User Avatar" class="rounded-circle user-avatar" />
+            <img src="/kimdokja.jpg" alt="User Avatar" class="rounded-circle user-avatar" />
             <div>
-              <div class="fw-bold">Anderson Barden</div>
+              <div class="fw-bold">Kim Dokja</div>
               <div class="text-muted small">Admin</div>
             </div>
           </div>
@@ -68,21 +71,24 @@
           <!-- Dropdown Modal -->
           <div v-if="isDropdownOpen" class="dropdown-modal shadow-sm">
             <div class="modal-header bg-light d-flex align-items-center p-3">
-              <div class="profile-avatar bg-primary text-white d-flex align-items-center justify-content-center">
-                <span>AI</span>
+              <div class="profile-avatar d-flex align-items-center">
+                <img src="/kimdokja.jpg" alt="User Avatar" class="rounded-circle user-avatar">
               </div>
-              <div class="ms-3">
-                <h6 class="mb-0">Aetherion Tech Indonesia</h6>
-                <p class="mb-0 text-muted" style="font-size: 0.9rem;">aetherion.tech.official@gmail.com</p>
+              <div class="ms-2 flex-grow-1 overflow-hidden">
+                <h6 class="mb-0 text-truncate">Kim Dokja</h6>
+                <p class="mb-0 text-muted text-truncate" style="font-size: 0.9rem;">kimdokja@laundry.com</p>
               </div>
             </div>
             <ul class="list-group">
-              <li class="list-group-item"><i class="bi bi-person me-2"></i><router-link to="/profile" class="text-decoration-none text-dark">Profile</router-link></li>
-              <li class="list-group-item"><i class="bi bi-gear me-2"></i><router-link to="/settings" class="text-decoration-none text-dark">Account settings</router-link></li>
-              <li class="list-group-item"><i class="bi bi-palette me-2"></i> Theme</li>
-              <li class="list-group-item"><i class="bi bi-lightning-charge me-2"></i> Open Quickstart</li>
-              <li class="list-group-item"><i class="bi bi-people me-2"></i> Switch account</li>
-              <li class="list-group-item text-danger"><i class="bi bi-box-arrow-right me-2"></i><router-link to="/logout" class="text-decoration-none text-danger">Log out</router-link></li>
+              <li class="list-group-item"><i class="bi bi-person me-2"></i><router-link to="/profile" class="text-decoration-none text-dark"> Akun Saya</router-link></li>
+              <li class="list-group-item"><i class="bi bi-gear me-2"></i><router-link to="/settings" class="text-decoration-none text-dark"> Pengaturan</router-link></li>
+              <li class="list-group-item"><i class="bi bi-palette me-2"></i> Tema</li>
+              <li class="list-group-item"><i class="bi bi-lightning-charge me-2"></i> History</li>
+              <li class="list-group-item"><i class="bi bi-people me-2"></i> Ganti Akun</li>
+              <li class="list-group-item text-danger"><i class="bi bi-box-arrow-right me-2">
+              </i><router-link to="/logout" class="text-decoration-none text-danger" @click.prevent="logout">
+                Keluar
+              </router-link></li>
             </ul>
           </div>
         </div>
@@ -103,9 +109,18 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const isDropdownOpen = ref(false);
+const searchQuery = ref("");
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
+};
+
+const performSearch = () => {
+  if (searchQuery.value.trim() !== "") {
+    alert("Mencari: " + searchQuery.value); // Gantilah dengan fungsi pencarian asli
+  } else {
+    alert("Masukkan kata kunci untuk mencari!");
+  }
 };
 
 // Tutup dropdown jika klik di luar
@@ -181,7 +196,7 @@ html, body {
 }
 
 .list-group-item:hover {
-  background: #f8f9fa;
+  background: #87a9db;
 }
 
 /* Sidebar */
@@ -199,7 +214,7 @@ html, body {
 .brand-title {
   font-family: 'Irian Serif', serif; /* Ubah font */
   font-size: 1.8rem; /* Besarin dikit biar lebih elegan */
-  font-weight: bold;
+  font-weight: semibold;
   text-align: center;
   color: black; /* Warna tetap hitam */
   margin-top: 10px;
@@ -233,13 +248,6 @@ html, body {
   color: white !important;
 }
 
-/* Logout sejajar */
-.logout {
-  color: red !important;
-  font-weight: semibold;
-  margin-top:60px
-}
-
 .main-content {
   position: fixed; /* Biarkan konten tetap memenuhi layar */
   top: 60px; /* Sesuaikan dengan tinggi header */
@@ -261,7 +269,8 @@ html, body {
   top: 0;
   left: 230px; /* Sesuaikan dengan sidebar */
   width: calc(100% - 250px);
-  padding: 15px 25px;
+  padding: 10px 25px;
+  min-height: 50px;
   background-color: white;
   border-bottom: 1px solid #e0e0e0;
   z-index: 1000;
@@ -269,28 +278,26 @@ html, body {
 
 /* Search Bar */
 .search-wrapper {
-  display: flex;
-  align-items: center;
-  background-color: #dce4f0; /* Warna abu-abu biru */
-  padding: 8px 15px;
-  border-radius: 30px;
-  position: relative;
-  width: 250px;
+  background-color:rgb(181, 203, 236); /* Warna sesuai gambar */
+  border-radius: 30px; /* Membuat bentuk rounded */
+  overflow: hidden; /* Agar input tidak keluar dari border */
 }
 
 .search-input {
+  background-color: transparent;
   border: none;
-  outline: none;
-  background: transparent;
-  width: 100%;
-  font-size: 14px;
+  padding: 10px 15px;
+  color: dark;
+}
+
+.search-input::placeholder {
+  color: rgba(0, 0, 0, 0.7); /* 🔹 Warna placeholder lebih soft */
 }
 
 .search-icon {
-  position: absolute;
-  right: 15px;
-  color: #6c757d;
-  font-size: 16px;
+  background-color:rgb(181, 203, 236);
+  border: none;
+  cursor: pointer;
 }
 
 /* Notifikasi & Profil */
@@ -302,7 +309,7 @@ html, body {
 
 .notification-icon {
   font-size: 1.2rem;
-  color: #6c757d;
+  color:rgb(0, 0, 0);
   cursor: pointer;
 }
 
@@ -318,8 +325,8 @@ html, body {
 }
 
 .user-avatar {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: #dce4f0;
   display: flex;

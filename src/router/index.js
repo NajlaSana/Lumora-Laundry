@@ -9,11 +9,10 @@ import Laporan from '@/views/Laporan.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import ProfilePage from '@/views/ProfilePage.vue';
 import BaseLayout from '@/layouts/BaseLayout.vue';
+import TambahPengeluaran from '@/views/TambahPengeluaran.vue';
 
 const routes = [
-  {
-    path: '/', component: LoginPage, // Halaman login default
-  },
+  {path: '/', component: LoginPage},
   {
     path: '/',
     component: BaseLayout,
@@ -26,6 +25,7 @@ const routes = [
       { path: 'pengeluaran', component: Pengeluaran },
       { path: 'laporan', component: Laporan },
       {path: '/profile', component: ProfilePage},
+      {path: '/TambahPengeluaran', component: TambahPengeluaran },
     ],
   },
 ];
