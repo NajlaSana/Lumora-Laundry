@@ -10,28 +10,28 @@
           :class="{ 'active-menu': $route.path === '/dashboard' }">
           <i class="bi bi-grid me-2"></i> Dashboard
         </router-link>
-        <router-link to="/karyawan" class="nav-link menu-item"
-          :class="{ 'active-menu': $route.path === '/karyawan' }">
+        <router-link to="/admin/karyawan" class="nav-link menu-item"
+          :class="{ 'active-menu': $route.path === '/admin/karyawan' }">
           <i class="bi bi-people me-2"></i> Karyawan
         </router-link>
-        <router-link to="/pelanggan" class="nav-link menu-item"
-          :class="{ 'active-menu': $route.path === '/pelanggan' }">
+        <router-link to="/admin/datapelanggan" class="nav-link menu-item"
+          :class="{ 'active-menu': $route.path === '/admin/datapelanggan' }">
           <i class="bi bi-person me-2"></i> Pelanggan
         </router-link>
-        <router-link to="/admin/JenisLayanan" class="nav-link menu-item"
-          :class="{ 'active-menu': $route.path === '//admin/JenisLayanan' }">
+        <router-link to="/layanan" class="nav-link menu-item"
+          :class="{ 'active-menu': $route.path === '/layanan' }">
           <i class="bi bi-box me-2"></i> Jenis Layanan
         </router-link>
-        <router-link to="/admin/DataTransaksi" class="nav-link menu-item"
-          :class="{ 'active-menu': $route.path === '/admin/DataTransaksi' }">
+        <router-link to="/transaksi" class="nav-link menu-item"
+          :class="{ 'active-menu': $route.path === '/transaksi' }">
           <i class="bi bi-receipt me-2"></i> Transaksi
         </router-link>
         <router-link to="/pengeluaran" class="nav-link menu-item"
           :class="{ 'active-menu': $route.path === '/pengeluaran' }">
           <i class="bi bi-cash-stack me-2"></i> Pengeluaran
         </router-link>
-        <router-link to="/laporan" class="nav-link menu-item"
-          :class="{ 'active-menu': $route.path === '/laporan' }">
+        <router-link to="/admin/laporan" class="nav-link menu-item"
+          :class="{ 'active-menu': $route.path === '/admin/laporan' }">
           <i class="bi bi-file-earmark-text me-2"></i> Laporan
         </router-link>
       </nav>
@@ -60,7 +60,7 @@
           <i class="bi bi-bell notification-icon"></i>
 
           <div class="d-flex align-items-center gap-2 user-profile" @click="toggleDropdown">
-            <img src="/AryaMohan.jpg" alt="User Avatar" class="rounded-circle user-avatar" />
+            <img src="/images/kimdokja.jpg" alt="User Avatar" class="rounded-circle user-avatar" />
             <div>
               <div class="fw-bold">Kim Dokja</div>
               <div class="text-muted small">Admin</div>
@@ -72,7 +72,7 @@
           <div v-if="isDropdownOpen" class="dropdown-modal shadow-sm">
             <div class="modal-header bg-light d-flex align-items-center p-3">
               <div class="profile-avatar d-flex align-items-center">
-                <img src="/AryaMohan.jpg" alt="User Avatar" class="rounded-circle user-avatar">
+                 <img src="/images/kimdokja.jpg" alt="User Avatar" class="rounded-circle user-avatar">
               </div>
               <div class="ms-2 flex-grow-1 overflow-hidden">
                 <h6 class="mb-0 text-truncate">Kim Dokja</h6>

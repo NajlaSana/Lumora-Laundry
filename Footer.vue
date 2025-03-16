@@ -46,7 +46,7 @@
 
 <style scoped>
 .footer {
-  background-color: #b1cfff; /* Warna biru muda */
+  background-color: #B1CFFF;
   padding: 40px 0;
 }
 
