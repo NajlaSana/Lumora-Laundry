@@ -139,7 +139,6 @@ onUnmounted(() => {
 });
 
 const logout = () => {
-  alert("Logout berhasil!");
   router.push("/");
 };
 </script>
@@ -220,7 +219,6 @@ html, body {
   margin-top: 10px;
   margin-bottom: 70px; /* Tambah jarak lebih besar */
 }
-
 
 /* Menu Item */
 .menu-item {

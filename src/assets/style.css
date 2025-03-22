@@ -1,0 +1,65 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap');
+
+/* Default font untuk halaman */
+body {
+    font-family: 'Inria Serif', serif;
+    font-size: 16px;
+    color: #333; /* Warna teks lebih nyaman dibaca */
+}
+
+/* Font Inter hanya untuk tabel */
+table {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Tambahkan border vertikal pada tabel */
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; /* Semua teks di tengah */
+}
+
+/* Header tabel */
+th {
+    background-color: #cfe2ff !important; /* Warna biru lebih tua */
+    font-weight: bold;
+    color: #000 !important; /* Warna teks hitam */
+}
+
+/* Hover efek */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Warna latar belakang header tabel */
+.table thead tr, .table-primary {
+    background-color: #cfe2ff !important; /* Warna biru lebih tua */
+    color: #000 !important; /* Warna teks hitam */
+}
+
+/* Style untuk foto profil */
+.foto-profil {
+    width: 80px !important; /* Ukuran tetap */
+    height: 80px !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Hilangkan border terakhir di kolom terakhir */
+th:last-child, td:last-child {
+    border-right: none;
+}
